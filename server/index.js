@@ -1,10 +1,19 @@
 import express from "express";
+import mongoose from "mongoose";
 import cors from "cors";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 // create server
 const app = express();
 app.use(express.json());
 app.use(cors);
+
+//connect to database
+mongoose.connect(process.env.DB_URI).then(() => {
+  console.log("db connected !");
+});
 
 // Run server
 const PORT = 5000;
