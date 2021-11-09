@@ -3,12 +3,16 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 
+import { productRouter } from "./routes/productRoute.js";
+
 dotenv.config();
 
 // create server
 const app = express();
 app.use(express.json());
 app.use(cors);
+
+app.use("/product", productRouter);
 
 //connect to database
 mongoose.connect(process.env.DB_URI).then(() => {
