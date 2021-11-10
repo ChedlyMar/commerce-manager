@@ -1,0 +1,52 @@
+.container {
+  border: black 1px solid;
+  padding: 1em;
+}
+
+.product-list-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-list-add {
+  text-decoration: none;
+  background-color: rgb(110, 116, 108);
+  color: aliceblue;
+  height: 100%;
+  padding: 0.6em 2em;
+  margin: auto 1em;
+  font-weight: 600;
+}
+.product-list-add:hover {
+  background-color: rgb(116, 141, 107);
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+}
+table {
+  width: 100%;
+}
+
+td {
+  padding: 0.2em 0.6em;
+}
+
+.btn-block {
+  padding: 0.6em;
+}
+
+.btn {
+  text-decoration: none;
+  margin-left: 0.6em;
+  background-color: aqua;
+  border: none;
+  padding: 0.4em 0.8em;
+  color: black;
+  font-weight: 600;
+}
+.btn:hover {
+  background-color: cadetblue;
+}
