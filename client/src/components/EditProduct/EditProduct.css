@@ -1,0 +1,30 @@
+.input-group {
+  display: flex;
+  justify-content: space-between;
+  margin: 1em 0.6em;
+  width: 50%;
+}
+
+.btn-group {
+  width: 50%;
+  display: flex;
+  justify-content: right;
+}
+
+.btn-edit {
+  text-decoration: none;
+  margin-left: 0.6em;
+  background-color: aqua;
+  border: none;
+  padding: 0.6em 1em;
+  color: black;
+  font-weight: 700;
+}
+.btn-edit:hover {
+  background-color: cadetblue;
+}
+
+label {
+  font-size: large;
+  font-weight: 600;
+}
