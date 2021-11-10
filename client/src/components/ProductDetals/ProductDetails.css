@@ -1,0 +1,12 @@
+.product-details {
+  margin-bottom: 2em;
+}
+
+.content-group {
+  display: flex;
+  margin: 0.4em 0.2em;
+}
+.pre-content {
+  display: block;
+  width: 80px;
+}
