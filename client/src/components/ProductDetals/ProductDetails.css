@@ -10,3 +10,7 @@
   display: block;
   width: 80px;
 }
+
+button:hover {
+  cursor: pointer;
+}
