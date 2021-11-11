@@ -45,7 +45,7 @@ const ProductList = () => {
                 <td>{product._id}</td>
                 <td>{product.name}</td>
                 <td>{product.qte}</td>
-                <td>{product.price}</td>
+                <td>$ {product.price}</td>
                 <td className="btn-block">
                   <Link to={`/products/${product._id}/edit`} className="btn">
                     Edit
