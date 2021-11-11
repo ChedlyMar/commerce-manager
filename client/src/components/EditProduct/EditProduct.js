@@ -4,9 +4,15 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import "./EditProduct.css";
+import { formValidation } from "../../validation/formValidation";
 
 const EditProduct = () => {
   const [product, setProduct] = useState();
+  const [productError, setProductError] = useState({
+    nameErr: "",
+    qteErr: "",
+    priceErr: "",
+  });
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -27,17 +33,22 @@ const EditProduct = () => {
   const resetHandler = (e) => {
     e.preventDefault();
     setProduct({ name: "", qte: "", price: "" });
+    setProductError({ nameErr: "", qteErr: "", priceErr: "" });
   };
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    const productFormValidation = formValidation(product);
+    setProductError(productFormValidation.productError);
 
-    try {
-      await axios.patch(`http://localhost:5000/product/${id}`, product);
+    if (productFormValidation.formIsValid) {
+      try {
+        await axios.patch(`http://localhost:5000/product/${id}`, product);
 
-      navigate("/");
-    } catch (error) {
-      console.error(error.message);
+        navigate("/");
+      } catch (error) {
+        console.error(error.message);
+      }
     }
   };
 
@@ -49,33 +60,44 @@ const EditProduct = () => {
           <div>
             <div className="input-group">
               <label>Name:</label>
-              <input
-                name="name"
-                value={product.name}
-                onChange={(e) =>
-                  setProduct({ ...product, name: e.target.value })
-                }
-              />
+              <div className="input">
+                <input
+                  name="name"
+                  value={product.name}
+                  onChange={(e) =>
+                    setProduct({ ...product, name: e.target.value })
+                  }
+                />
+                {productError.nameErr && <p>{productError.nameErr}</p>}
+              </div>
             </div>
             <div className="input-group">
               <label>Qte:</label>
-              <input
-                name="qte"
-                value={product.qte}
-                onChange={(e) =>
-                  setProduct({ ...product, qte: e.target.value })
-                }
-              />
+              <div className="input">
+                <input
+                  name="qte"
+                  value={product.qte}
+                  onChange={(e) =>
+                    setProduct({ ...product, qte: e.target.value })
+                  }
+                />
+                {productError.qteErr && <p>{productError.qteErr}</p>}
+              </div>
             </div>
             <div className="input-group">
               <label>Price:</label>
-              <input
-                name="price"
-                value={product.price}
-                onChange={(e) =>
-                  setProduct({ ...product, price: e.target.value })
-                }
-              />
+              <div className="input">
+                <span class="input-symbol-dollar">
+                  <input
+                    name="price"
+                    value={product.price}
+                    onChange={(e) =>
+                      setProduct({ ...product, price: e.target.value })
+                    }
+                  />
+                </span>
+                {productError.priceErr && <p>{productError.priceErr}</p>}
+              </div>
             </div>
           </div>
         )}
